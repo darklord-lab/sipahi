@@ -1271,6 +1271,110 @@ const PRODUCTS = {
   }
 };
 
+/* ── PRODUCT CUSTOMIZATION ───────────────────────────────────── */
+function initProductCustomization() {
+  const btnCustomize = document.getElementById('btn-customize-bat');
+  const modal = document.getElementById('customize-modal');
+  const closeBtn = document.getElementById('close-customize-modal');
+  const form = document.getElementById('customize-form');
+
+  if (!btnCustomize || !modal || !form) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id') || 'p1';
+  const prod = PRODUCTS[id];
+
+  // Only show the customization button for bats
+  if (prod && prod.category.toLowerCase().includes('bats')) {
+    btnCustomize.style.display = 'flex';
+    const parentContainer = btnCustomize.parentElement;
+    if (parentContainer) parentContainer.style.display = 'block';
+  } else {
+    btnCustomize.style.display = 'none';
+    const parentContainer = btnCustomize.parentElement;
+    if (parentContainer) parentContainer.style.display = 'none';
+    return;
+  }
+
+  const baseProductPrice = prod ? prod.price : 3499;
+
+  // Open Modal
+  btnCustomize.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add('open');
+  });
+
+  // Close Modal
+  const closeModal = () => modal.classList.remove('open');
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Submit customization form
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const engraving = document.getElementById('custom-engraving').value.trim().toUpperCase();
+    const gripColor = form.querySelector('input[name="grip-color"]:checked')?.value || 'White';
+    const isKnocking = document.getElementById('add-knocking').checked;
+    const isScuff = document.getElementById('add-scuff').checked;
+
+    // Calculate updated price
+    let extraCost = 0;
+    let addonsList = [];
+    if (isKnocking) {
+      extraCost += 250;
+      addonsList.push("Knocking Service (+₹250)");
+    }
+    if (isScuff) {
+      extraCost += 150;
+      addonsList.push("Anti-Scuff Sheet (+₹150)");
+    }
+
+    const finalPrice = baseProductPrice + extraCost;
+
+    // Update display price on details page
+    const priceNowEl = document.querySelector('.detail-price-now');
+    if (priceNowEl) {
+      priceNowEl.textContent = `₹${finalPrice.toLocaleString('en-IN')}`;
+    }
+
+    // Build custom variant text
+    let detailsText = `Grip: ${gripColor}`;
+    if (engraving) {
+      detailsText += ` | Engraved: "${engraving}"`;
+    }
+    if (addonsList.length > 0) {
+      detailsText += ` | Add-ons: ${addonsList.join(', ')}`;
+    }
+
+    // Show Customization Summary
+    const summaryBox = document.getElementById('customization-summary');
+    const summaryText = document.getElementById('custom-details-text');
+    if (summaryBox && summaryText) {
+      summaryText.textContent = detailsText;
+      summaryBox.style.display = 'block';
+    }
+
+    // Update Add to Cart Button dataset attributes
+    const addCartBtn = document.getElementById('detail-add-cart');
+    if (addCartBtn) {
+      addCartBtn.dataset.productPrice = finalPrice;
+      
+      let baseName = prod ? prod.name : "Sipahi Premium English Willow Cricket Bat Grade A";
+      let customSuffix = ` (${detailsText})`;
+      addCartBtn.dataset.productName = baseName + customSuffix;
+    }
+
+    // Close Modal and show toast feedback
+    closeModal();
+    if (window.Toast) {
+      Toast.show("✓ Customization settings applied!", "success");
+    }
+  });
+}
+
 /* ── DETAIL PAGE ADD TO CART ─────────────────────────────────── */
 function initDetailCart() {
   const btn = document.getElementById('detail-add-cart');
@@ -1515,6 +1619,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductDetailPage();
   initDetailCart();
   initLocationSelector();
+  initProductCustomization();
 
   // Wishlist page
   Wishlist.renderPage();

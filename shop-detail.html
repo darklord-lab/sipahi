@@ -231,12 +231,27 @@
 
         <div class="detail-divider"></div>
 
-        <!-- Quantity -->
-        <p class="qty-label">Quantity</p>
-        <div class="qty-picker" data-qty-picker>
-          <button class="qty-btn" data-qty-minus>−</button>
-          <input class="qty-val" type="number" value="1" min="1" max="99" data-qty-val>
-          <button class="qty-btn" data-qty-plus>+</button>
+        <!-- Quantity & Customize Row -->
+        <div class="qty-custom-row" style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+          <div>
+            <p class="qty-label" style="margin-bottom:8px">Quantity</p>
+            <div class="qty-picker" style="margin-bottom:0" data-qty-picker>
+              <button class="qty-btn" data-qty-minus>−</button>
+              <input class="qty-val" type="number" value="1" min="1" max="99" data-qty-val>
+              <button class="qty-btn" data-qty-plus>+</button>
+            </div>
+          </div>
+          <div style="flex-grow:1; align-self:flex-end">
+            <button class="btn btn-outline" id="btn-customize-bat" style="width:100%; height:44px; display:flex; align-items:center; justify-content:center; gap:8px; border-color:#2874f0; color:#2874f0; font-weight:700; border-radius:var(--radius-sm);">
+              <span>✏️</span> Customize Bat
+            </button>
+          </div>
+        </div>
+        
+        <!-- Customization Summary Display -->
+        <div id="customization-summary" style="display:none; background:#f0f5ff; border:1px dashed #2874f0; border-radius:var(--radius-sm); padding:10px 14px; margin-bottom:24px; font-size:13px; color:#1e3a8a; line-height:1.5;">
+          <strong>Customization applied:</strong>
+          <div id="custom-details-text" style="margin-top:4px; font-weight:500;"></div>
         </div>
 
         <!-- CTA Buttons -->
@@ -513,6 +528,73 @@
     </div>
   </div>
 </footer>
+
+<!-- ── CUSTOMIZATION MODAL ── -->
+<div class="modal-overlay" id="customize-modal">
+  <div class="modal-container">
+    <!-- Modal Header -->
+    <div style="padding: 16px 20px; border-bottom: 1px solid #edf2f7; display: flex; align-items: center; justify-content: space-between;">
+      <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #1a202c; display: flex; align-items: center; gap: 8px;">
+        <span>🏏</span> Customize Your Cricket Bat
+      </h3>
+      <button id="close-customize-modal" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #718096; line-height: 1; padding: 4px;">✕</button>
+    </div>
+    <!-- Modal Body -->
+    <form id="customize-form" style="padding: 20px; display: flex; flex-direction: column; gap: 16px; margin: 0;">
+      <!-- Custom Laser Engraving -->
+      <div>
+        <label style="display: block; font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 6px;">1. Laser Name Engraving (Free)</label>
+        <input type="text" id="custom-engraving" placeholder="e.g. SATYAM PANDEY" maxlength="15" style="width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e0; border-radius: 6px; font-size: 13px; outline: none; text-transform: uppercase;">
+        <span style="font-size: 11px; color: #718096; margin-top: 4px; display: block;">Max 15 characters (A-Z, 0-9). Engraved on the side edge of the bat.</span>
+      </div>
+
+      <!-- Grip Color Option -->
+      <div>
+        <label style="display: block; font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 8px;">2. Select Grip Color</label>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
+            <input type="radio" name="grip-color" value="White" checked style="accent-color: #2874f0;"> White
+          </label>
+          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
+            <input type="radio" name="grip-color" value="Blue" style="accent-color: #2874f0;"> Blue
+          </label>
+          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
+            <input type="radio" name="grip-color" value="Black" style="accent-color: #2874f0;"> Black
+          </label>
+          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
+            <input type="radio" name="grip-color" value="Orange" style="accent-color: #2874f0;"> Orange
+          </label>
+        </div>
+      </div>
+
+      <!-- Premium Upgrades -->
+      <div>
+        <label style="display: block; font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 8px;">3. Premium Add-ons</label>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <label style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border: 1.5px solid #cbd5e0; border-radius: 6px; font-size: 12px; font-weight: 600; margin: 0;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <input type="checkbox" id="add-knocking" style="width: 16px; height: 16px; accent-color: #2874f0;">
+              <span>Professional Knocking Service</span>
+            </span>
+            <span style="color: #2874f0;">+₹250</span>
+          </label>
+          <label style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border: 1.5px solid #cbd5e0; border-radius: 6px; font-size: 12px; font-weight: 600; margin: 0;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <input type="checkbox" id="add-scuff" style="width: 16px; height: 16px; accent-color: #2874f0;">
+              <span>Anti-Scuff Sheet Upgrade</span>
+            </span>
+            <span style="color: #2874f0;">+₹150</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Apply Customization Button -->
+      <button type="submit" style="background: #2874f0; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; transition: background 0.15s ease;">
+        Apply Customization
+      </button>
+    </form>
+  </div>
+</div>
 
 <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">↑</button>
 <script src="javascript/sipahi.js"></script>
