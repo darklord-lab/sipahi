@@ -1315,24 +1315,34 @@ function initProductCustomization() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const engraving = document.getElementById('custom-engraving').value.trim().toUpperCase();
-    const gripColor = form.querySelector('input[name="grip-color"]:checked')?.value || 'White';
-    const isKnocking = document.getElementById('add-knocking').checked;
-    const isScuff = document.getElementById('add-scuff').checked;
+    const customText = document.getElementById('custom-text')?.value?.trim() || '';
 
-    // Calculate updated price
-    let extraCost = 0;
-    let addonsList = [];
-    if (isKnocking) {
-      extraCost += 250;
-      addonsList.push("Knocking Service (+₹250)");
-    }
-    if (isScuff) {
-      extraCost += 150;
-      addonsList.push("Anti-Scuff Sheet (+₹150)");
+    // If customization text is empty, reset customization display and button attributes
+    if (!customText) {
+      // Reset display price
+      const priceNowEl = document.querySelector('.detail-price-now');
+      if (priceNowEl) {
+        priceNowEl.textContent = `₹${baseProductPrice.toLocaleString('en-IN')}`;
+      }
+
+      // Hide Customization Summary
+      const summaryBox = document.getElementById('customization-summary');
+      if (summaryBox) {
+        summaryBox.style.display = 'none';
+      }
+
+      // Reset Add to Cart Button dataset attributes
+      const addCartBtn = document.getElementById('detail-add-cart');
+      if (addCartBtn) {
+        addCartBtn.dataset.productPrice = baseProductPrice;
+        addCartBtn.dataset.productName = prod ? prod.name : "Sipahi Premium English Willow Cricket Bat Grade A";
+      }
+
+      closeModal();
+      return;
     }
 
-    const finalPrice = baseProductPrice + extraCost;
+    const finalPrice = baseProductPrice;
 
     // Update display price on details page
     const priceNowEl = document.querySelector('.detail-price-now');
@@ -1340,20 +1350,11 @@ function initProductCustomization() {
       priceNowEl.textContent = `₹${finalPrice.toLocaleString('en-IN')}`;
     }
 
-    // Build custom variant text
-    let detailsText = `Grip: ${gripColor}`;
-    if (engraving) {
-      detailsText += ` | Engraved: "${engraving}"`;
-    }
-    if (addonsList.length > 0) {
-      detailsText += ` | Add-ons: ${addonsList.join(', ')}`;
-    }
-
     // Show Customization Summary
     const summaryBox = document.getElementById('customization-summary');
     const summaryText = document.getElementById('custom-details-text');
     if (summaryBox && summaryText) {
-      summaryText.textContent = detailsText;
+      summaryText.textContent = customText;
       summaryBox.style.display = 'block';
     }
 
@@ -1363,7 +1364,7 @@ function initProductCustomization() {
       addCartBtn.dataset.productPrice = finalPrice;
       
       let baseName = prod ? prod.name : "Sipahi Premium English Willow Cricket Bat Grade A";
-      let customSuffix = ` (${detailsText})`;
+      let customSuffix = ` (${customText})`;
       addCartBtn.dataset.productName = baseName + customSuffix;
     }
 

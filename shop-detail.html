@@ -541,51 +541,10 @@
     </div>
     <!-- Modal Body -->
     <form id="customize-form" style="padding: 20px; display: flex; flex-direction: column; gap: 16px; margin: 0;">
-      <!-- Custom Laser Engraving -->
       <div>
-        <label style="display: block; font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 6px;">1. Laser Name Engraving (Free)</label>
-        <input type="text" id="custom-engraving" placeholder="e.g. SATYAM PANDEY" maxlength="15" style="width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e0; border-radius: 6px; font-size: 13px; outline: none; text-transform: uppercase;">
-        <span style="font-size: 11px; color: #718096; margin-top: 4px; display: block;">Max 15 characters (A-Z, 0-9). Engraved on the side edge of the bat.</span>
-      </div>
-
-      <!-- Grip Color Option -->
-      <div>
-        <label style="display: block; font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 8px;">2. Select Grip Color</label>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
-            <input type="radio" name="grip-color" value="White" checked style="accent-color: #2874f0;"> White
-          </label>
-          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
-            <input type="radio" name="grip-color" value="Blue" style="accent-color: #2874f0;"> Blue
-          </label>
-          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
-            <input type="radio" name="grip-color" value="Black" style="accent-color: #2874f0;"> Black
-          </label>
-          <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 10px; border: 1.5px solid #cbd5e0; border-radius: 6px; flex-grow: 1; justify-content: center; margin: 0;">
-            <input type="radio" name="grip-color" value="Orange" style="accent-color: #2874f0;"> Orange
-          </label>
-        </div>
-      </div>
-
-      <!-- Premium Upgrades -->
-      <div>
-        <label style="display: block; font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 8px;">3. Premium Add-ons</label>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <label style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border: 1.5px solid #cbd5e0; border-radius: 6px; font-size: 12px; font-weight: 600; margin: 0;">
-            <span style="display: flex; align-items: center; gap: 8px;">
-              <input type="checkbox" id="add-knocking" style="width: 16px; height: 16px; accent-color: #2874f0;">
-              <span>Professional Knocking Service</span>
-            </span>
-            <span style="color: #2874f0;">+₹250</span>
-          </label>
-          <label style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border: 1.5px solid #cbd5e0; border-radius: 6px; font-size: 12px; font-weight: 600; margin: 0;">
-            <span style="display: flex; align-items: center; gap: 8px;">
-              <input type="checkbox" id="add-scuff" style="width: 16px; height: 16px; accent-color: #2874f0;">
-              <span>Anti-Scuff Sheet Upgrade</span>
-            </span>
-            <span style="color: #2874f0;">+₹150</span>
-          </label>
-        </div>
+        <label for="custom-text" style="display: block; font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 8px;">Customization Details</label>
+        <textarea id="custom-text" placeholder="Enter your customization instructions (e.g., name engraving, grip preference, or special requests)" style="width: 100%; height: 110px; padding: 12px; border: 1.5px solid #cbd5e0; border-radius: 8px; font-size: 13px; outline: none; font-family: inherit; resize: none; box-sizing: border-box; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2874f0'" onblur="this.style.borderColor='#cbd5e0'"></textarea>
+        <span style="font-size: 11px; color: #718096; margin-top: 6px; display: block; line-height: 1.4;">Enter any details you want customized on your cricket bat. Our team will review this when preparing your order.</span>
       </div>
 
       <!-- Apply Customization Button -->
