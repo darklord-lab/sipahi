@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket Equipment Shop — Sipahi Sports</title>
+  <meta name="description" content="Buy cricket bats, balls, helmets, gloves, pads, bags and accessories. Sipahi Sports — India's #1 cricket equipment store.">
+  <link rel="icon" href="images/icon/favicon.png">
+  <link rel="stylesheet" href="stylesheets/sipahi.css">
+</head>
+<body>
+
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════ -->
+<header class="site-header" id="site-header">
+  <div class="container">
+    <!-- Main Header Row -->
+    <div class="header-main">
+      <div class="header-inner">
+        <!-- Brand Logo (Flipkart-style but for Sipahi Sports) -->
+        <a href="index.html" class="site-logo">
+          <img src="images/logo-client.png" alt="Sipahi Sports" style="height:60px;" onerror="this.style.display='none'">
+          <span class="site-logo-text" style="display:inline-block; font-size:22px; font-weight:900; letter-spacing:-0.5px; color:#212121; margin-left:8px;">SIPAHI <span style="color:#2874f0;">SPORTS</span></span>
+        </a>
+
+        <!-- Hamburger menu for mobile navigation -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu" style="display:none;">
+          <span></span><span></span><span></span>
+        </button>
+
+        <!-- Search Bar -->
+        <div class="header-search-wrapper">
+          <svg class="header-search-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="header-search-input" id="header-search" placeholder="Search for Products, Brands and More" autocomplete="off">
+        </div>
+
+        <!-- Header Actions (More, Wishlist, Cart) -->
+        <div class="header-actions-flip">
+          <!-- More Dropdown -->
+          <div class="action-item-flip more-dropdown-wrapper">
+            <span>More</span>
+            <svg class="arrow-down" width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>
+            <div class="dropdown-menu-flip">
+              <a href="contact.html">Customer Care</a>
+              <a href="about.html">About Us</a>
+              <a href="contact.html">Contact Us</a>
+            </div>
+          </div>
+
+          <!-- Wishlist Icon -->
+          <a href="wishlist.html" class="action-item-flip wishlist-action-flip">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <span>Wishlist</span>
+            <span class="wishlist-badge-flip" id="wishlist-count" style="display:none">0</span>
+          </a>
+
+          <!-- Cart Icon -->
+          <a href="view-cart.html" class="action-item-flip cart-action-flip">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span>Cart</span>
+            <span class="cart-badge-flip" id="cart-count" style="display:none">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Categories Bar (sub-nav) -->
+    <nav class="sub-nav">
+      <ul class="sub-nav-list-flip">
+        <li>
+          <a href="index.html" class="category-item-flip ">
+            <div class="icon-wrapper">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor">
+                <rect x="5" y="8" width="14" height="12" rx="2" ry="2" />
+                <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="#212121" stroke-width="2" />
+                <circle cx="12" cy="14" r="2" fill="#212121" stroke="none" />
+              </svg>
+            </div>
+            <span class="category-label">For You</span>
+          </a>
+        </li>
+        <li>
+          <a href="shop-list.html?cat=bats" class="category-item-flip ">
+            <div class="icon-wrapper">
+              <img src="images/product/cricket-bat.png" alt="Bats" />
+            </div>
+            <span class="category-label">Bats</span>
+          </a>
+        </li>
+        <li>
+          <a href="shop-list.html?cat=balls" class="category-item-flip ">
+            <div class="icon-wrapper">
+              <img src="images/product/cricket-ball.png" alt="Balls" />
+            </div>
+            <span class="category-label">Balls</span>
+          </a>
+        </li>
+        <li>
+          <a href="shop-list.html?cat=protective" class="category-item-flip ">
+            <div class="icon-wrapper">
+              <img src="images/product/cricket-helmet.png" alt="Protective Gear" />
+            </div>
+            <span class="category-label">Protective Gear</span>
+          </a>
+        </li>
+        <li>
+          <a href="shop-list.html?cat=bags" class="category-item-flip ">
+            <div class="icon-wrapper">
+              <img src="images/product/cricket-bag.png" alt="Cricket Bags" />
+            </div>
+            <span class="category-label">Cricket Bags</span>
+          </a>
+        </li>
+        <li>
+          <a href="shop-list.html?cat=accessories" class="category-item-flip ">
+            <div class="icon-wrapper">
+              <img src="images/product/cricket-stumps.png" alt="Accessories" />
+            </div>
+            <span class="category-label">Accessories</span>
+          </a>
+        </li>
+        <li>
+          <a href="shop-list.html?cat=kids" class="category-item-flip ">
+            <div class="icon-wrapper">
+              <img src="images/product/cricket-bat-kw.png" alt="Kids Cricket" />
+            </div>
+            <span class="category-label">Kids Cricket</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-overlay"></div>
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-close"><button id="mobile-nav-close" class="btn btn-ghost btn-sm">✕ Close</button></div>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="shop-list.html">🏏 All Products</a></li>
+      <li><a href="shop-list.html?cat=bats">🏏 Cricket Bats</a></li>
+      <li><a href="shop-list.html?cat=balls">⚾ Cricket Balls</a></li>
+      <li><a href="shop-list.html?cat=protective">🛡️ Protective Gear</a></li>
+      <li><a href="shop-list.html?cat=bags">🎒 Cricket Bags</a></li>
+      <li><a href="shop-list.html?cat=accessories">🔧 Accessories</a></li>
+      <li><a href="shop-list.html?cat=kids">👦 Kids Cricket</a></li>
+      <li><a href="wishlist.html">❤️ Wishlist</a></li>
+      <li><a href="view-cart.html">🛒 My Cart</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── MOBILE FILTER BAR ── -->
+<div class="mobile-filter-bar">
+  <div class="container" style="display:flex;gap:8px;overflow-x:auto;padding:8px 0">
+    <button class="filter-chip" id="filter-chip">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      Filters
+    </button>
+    <button class="filter-chip active" data-cat="all" onclick="window.location.href='shop-list.html'">All</button>
+    <button class="filter-chip" data-cat="bats" onclick="window.location.href='shop-list.html?cat=bats'">🏏 Bats</button>
+    <button class="filter-chip" data-cat="balls" onclick="window.location.href='shop-list.html?cat=balls'">⚾ Balls</button>
+    <button class="filter-chip" data-cat="protective" onclick="window.location.href='shop-list.html?cat=protective'">🛡️ Protective</button>
+    <button class="filter-chip" data-cat="bags" onclick="window.location.href='shop-list.html?cat=bags'">🎒 Bags</button>
+    <button class="filter-chip" data-cat="accessories" onclick="window.location.href='shop-list.html?cat=accessories'">🔧 Accessories</button>
+    <button class="filter-chip" data-cat="kids" onclick="window.location.href='shop-list.html?cat=kids'">👦 Kids</button>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="shop-page">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current listing-title">All Cricket Products</span>
+    </div>
+
+    <div class="shop-layout">
+
+      <!-- ── FILTER SIDEBAR ── -->
+      <aside class="filter-sidebar" id="filter-sidebar">
+        <div class="filter-header">
+          <h3>Filters</h3>
+          <button class="filter-clear" onclick="window.location.href='shop-list.html'">Clear All</button>
+        </div>
+
+        <!-- Category -->
+        <div class="filter-group open">
+          <div class="filter-group-header">
+            <span class="filter-group-title">Category</span>
+            <span class="filter-group-icon">▾</span>
+          </div>
+          <div class="filter-group-body">
+            <a href="shop-list.html?cat=bats" class="filter-option-link">🏏 Cricket Bats</a>
+            <a href="shop-list.html?cat=balls" class="filter-option-link">⚾ Cricket Balls</a>
+            <a href="shop-list.html?cat=pads" class="filter-option-link">🦺 Batting Pads</a>
+            <a href="shop-list.html?cat=gloves" class="filter-option-link">🧤 Batting Gloves</a>
+            <a href="shop-list.html?cat=helmets" class="filter-option-link">⛑️ Helmets</a>
+            <a href="shop-list.html?cat=bags" class="filter-option-link">🎒 Cricket Bags</a>
+            <a href="shop-list.html?cat=accessories" class="filter-option-link">🔧 Accessories</a>
+            <a href="shop-list.html?cat=kids" class="filter-option-link">👦 Kids Cricket</a>
+          </div>
+        </div>
+
+        <!-- Bat Type -->
+        <div class="filter-group open" id="filter-bat-type" style="display: none;">
+          <div class="filter-group-header">
+            <span class="filter-group-title">Bat Type</span>
+            <span class="filter-group-icon">▾</span>
+          </div>
+          <div class="filter-group-body">
+            <label class="filter-option"><input type="checkbox" data-filter-bat="english"> English Willow</label>
+            <label class="filter-option"><input type="checkbox" data-filter-bat="kashmir"> Kashmir Willow</label>
+            <label class="filter-option"><input type="checkbox" data-filter-bat="tennis"> Tennis Ball Bat</label>
+            <label class="filter-option"><input type="checkbox" data-filter-bat="kids"> Kids Bat</label>
+          </div>
+        </div>
+
+        <!-- Ball Type -->
+        <div class="filter-group open" id="filter-ball-type" style="display: none;">
+          <div class="filter-group-header">
+            <span class="filter-group-title">Ball Type</span>
+            <span class="filter-group-icon">▾</span>
+          </div>
+          <div class="filter-group-body">
+            <label class="filter-option"><input type="checkbox" data-filter-ball="leather"> Leather Ball</label>
+            <label class="filter-option"><input type="checkbox" data-filter-ball="tennis"> Tennis Ball</label>
+          </div>
+        </div>
+
+        <!-- Protection Type -->
+        <div class="filter-group open" id="filter-protection-type" style="display: none;">
+          <div class="filter-group-header">
+            <span class="filter-group-title">Protection Type</span>
+            <span class="filter-group-icon">▾</span>
+          </div>
+          <div class="filter-group-body">
+            <label class="filter-option"><input type="checkbox" data-filter-prot="helmet"> Helmets</label>
+            <label class="filter-option"><input type="checkbox" data-filter-prot="pads"> Batting Pads</label>
+            <label class="filter-option"><input type="checkbox" data-filter-prot="gloves"> Gloves (Batting & Keeper)</label>
+            <label class="filter-option"><input type="checkbox" data-filter-prot="guards"> Guards (Thigh & Elbow)</label>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="filter-group open">
+          <div class="filter-group-header">
+            <span class="filter-group-title">Price Range (₹)</span>
+            <span class="filter-group-icon">▾</span>
+          </div>
+          <div class="filter-group-body">
+            <div class="price-range">
+              <input type="range" min="0" max="10000" value="10000" id="price-range" style="width:100%">
+              <div class="price-inputs" style="display:flex;gap:8px;margin-top:8px">
+                <div style="flex:1">
+                  <label style="font-size:11px;color:var(--text-muted);font-weight:600">Min ₹</label>
+                  <input type="number" id="price-min" value="0" min="0" style="width:100%;height:32px;padding:0 8px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:12px">
+                </div>
+                <div style="flex:1">
+                  <label style="font-size:11px;color:var(--text-muted);font-weight:600">Max ₹</label>
+                  <input type="number" id="price-max" value="10000" min="0" style="width:100%;height:32px;padding:0 8px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:12px">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discount -->
+        <div class="filter-group">
+          <div class="filter-group-header">
+            <span class="filter-group-title">Discount</span>
+            <span class="filter-group-icon">▾</span>
+          </div>
+          <div class="filter-group-body">
+            <label class="filter-option"><input type="checkbox" data-filter-discount="10"> 10% and above</label>
+            <label class="filter-option"><input type="checkbox" data-filter-discount="20"> 20% and above</label>
+            <label class="filter-option"><input type="checkbox" data-filter-discount="30"> 30% and above</label>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="filter-group">
+          <div class="filter-group-header">
+            <span class="filter-group-title">Rating</span>
+            <span class="filter-group-icon">▾</span>
+          </div>
+          <div class="filter-group-body">
+            <label class="filter-option"><input type="checkbox" data-filter-rating="4.5"> ★★★★★ 4.5+</label>
+            <label class="filter-option"><input type="checkbox" data-filter-rating="4.0"> ★★★★ 4.0+</label>
+            <label class="filter-option"><input type="checkbox" data-filter-rating="3.0"> ★★★ 3.0+</label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── PRODUCT GRID ── -->
+      <div class="listing-area">
+        <div class="listing-header">
+          <p class="listing-count">Showing <strong>16</strong> products</p>
+          <select class="sort-select" id="sort-select">
+            <option>Sort: Popularity</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest First</option>
+            <option>Top Rated</option>
+          </select>
+        </div>
+
+        <div class="products-grid">
+
+          <!-- 1: English Willow Bat -->
+          <div class="product-card" data-product="p1" data-category="bats">
+            <a href="shop-detail.html?id=p1" class="product-link" aria-label="English Willow Bat"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-hot">BEST SELLER</span></div>
+              <button class="product-wishlist" data-product-id="p1" data-product-name="Sipahi Premium English Willow Cricket Bat Grade A" data-product-price="3499" data-product-mrp="4999" data-product-img="images/product/cricket-bat.png">🤍</button>
+              <img src="images/product/cricket-bat.png" alt="English Willow Cricket Bat" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Premium English Willow Cricket Bat — Grade A</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div><span class="rating-count">4.9 (2,100+)</span></div>
+              <div class="product-price"><span class="price-now">₹3,499</span><span class="price-mrp">₹4,999</span><span class="price-off">30% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p1" data-product-name="Sipahi Premium English Willow Cricket Bat Grade A" data-product-price="3499" data-product-mrp="4999" data-product-img="images/product/cricket-bat.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 2: Leather Ball -->
+          <div class="product-card" data-product="p2" data-category="balls">
+            <a href="shop-detail.html?id=p2" class="product-link" aria-label="Leather Cricket Ball"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-new">NEW</span></div>
+              <button class="product-wishlist" data-product-id="p2" data-product-name="Sipahi Tournament Leather Cricket Ball — Red" data-product-price="649" data-product-mrp="899" data-product-img="images/product/cricket-ball.png">🤍</button>
+              <img src="images/product/cricket-ball.png" alt="Leather Cricket Ball" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Tournament Leather Cricket Ball — Red, 156g</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.7 (1,400+)</span></div>
+              <div class="product-price"><span class="price-now">₹649</span><span class="price-mrp">₹899</span><span class="price-off">28% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p2" data-product-name="Sipahi Tournament Leather Cricket Ball — Red" data-product-price="649" data-product-mrp="899" data-product-img="images/product/cricket-ball.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 3: Cricket Helmet -->
+          <div class="product-card" data-product="p3" data-category="protective helmets">
+            <a href="shop-detail.html?id=p3" class="product-link" aria-label="Cricket Helmet"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-sale">SALE</span></div>
+              <button class="product-wishlist" data-product-id="p3" data-product-name="Sipahi ABS Cricket Helmet with Steel Grill" data-product-price="1799" data-product-mrp="2499" data-product-img="images/product/cricket-helmet.png">🤍</button>
+              <img src="images/product/cricket-helmet.png" alt="Cricket Helmet" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">ABS Cricket Helmet with Steel Grill — ISI Certified</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span></div><span class="rating-count">4.4 (652)</span></div>
+              <div class="product-price"><span class="price-now">₹1,799</span><span class="price-mrp">₹2,499</span><span class="price-off">28% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p3" data-product-name="Sipahi ABS Cricket Helmet with Steel Grill" data-product-price="1799" data-product-mrp="2499" data-product-img="images/product/cricket-helmet.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 4: Batting Gloves -->
+          <div class="product-card" data-product="p4" data-category="protective gloves">
+            <a href="shop-detail.html?id=p4" class="product-link" aria-label="Batting Gloves"></a>
+            <div class="product-img-wrap">
+              <button class="product-wishlist" data-product-id="p4" data-product-name="Sipahi Premium Leather Batting Gloves" data-product-price="649" data-product-mrp="999" data-product-img="images/product/cricket-gloves.png">🤍</button>
+              <img src="images/product/cricket-gloves.png" alt="Batting Gloves" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Premium Leather Batting Gloves — Men's</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.5 (820)</span></div>
+              <div class="product-price"><span class="price-now">₹649</span><span class="price-mrp">₹999</span><span class="price-off">35% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p4" data-product-name="Sipahi Premium Leather Batting Gloves" data-product-price="649" data-product-mrp="999" data-product-img="images/product/cricket-gloves.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 5: Batting Pads -->
+          <div class="product-card" data-product="p5" data-category="protective pads">
+            <a href="shop-detail.html?id=p5" class="product-link" aria-label="Batting Pads"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-new">NEW</span></div>
+              <button class="product-wishlist" data-product-id="p5" data-product-name="Sipahi Pro Batting Pads EVA Foam" data-product-price="999" data-product-mrp="1399" data-product-img="images/product/cricket-pads.png">🤍</button>
+              <img src="images/product/cricket-pads.png" alt="Batting Pads" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Pro Batting Pads — EVA Foam, White, Size M/L</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span></div><span class="rating-count">4.3 (544)</span></div>
+              <div class="product-price"><span class="price-now">₹999</span><span class="price-mrp">₹1,399</span><span class="price-off">29% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p5" data-product-name="Sipahi Pro Batting Pads EVA Foam" data-product-price="999" data-product-mrp="1399" data-product-img="images/product/cricket-pads.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 6: Kashmir Willow Bat -->
+          <div class="product-card" data-product="p8" data-category="bats">
+            <a href="shop-detail.html?id=p8" class="product-link" aria-label="Kashmir Willow Bat"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-sale">OFFER</span></div>
+              <button class="product-wishlist" data-product-id="p8" data-product-name="Sipahi Kashmir Willow Cricket Bat" data-product-price="1299" data-product-mrp="1899" data-product-img="images/product/cricket-bat-kw.png">🤍</button>
+              <img src="images/product/cricket-bat-kw.png" alt="Kashmir Willow Bat" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Kashmir Willow Cricket Bat — Full Size, Affordable</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.5 (1,200)</span></div>
+              <div class="product-price"><span class="price-now">₹1,299</span><span class="price-mrp">₹1,899</span><span class="price-off">32% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p8" data-product-name="Sipahi Kashmir Willow Cricket Bat" data-product-price="1299" data-product-mrp="1899" data-product-img="images/product/cricket-bat-kw.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 7: Cricket Kit Bag -->
+          <div class="product-card" data-product="p6" data-category="bags">
+            <a href="shop-detail.html?id=p6" class="product-link" aria-label="Cricket Bag"></a>
+            <div class="product-img-wrap">
+              <button class="product-wishlist" data-product-id="p6" data-product-name="Sipahi Pro Cricket Kit Bag" data-product-price="1499" data-product-mrp="1999" data-product-img="images/product/cricket-bag.png">🤍</button>
+              <img src="images/product/cricket-bag.png" alt="Cricket Kit Bag" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Pro Cricket Kit Bag — Wheels + Shoulder Strap</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.6 (780)</span></div>
+              <div class="product-price"><span class="price-now">₹1,499</span><span class="price-mrp">₹1,999</span><span class="price-off">25% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p6" data-product-name="Sipahi Pro Cricket Kit Bag" data-product-price="1499" data-product-mrp="1999" data-product-img="images/product/cricket-bag.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 8: White Leather Ball -->
+          <div class="product-card" data-product="p7" data-category="balls">
+            <a href="shop-detail.html?id=p7" class="product-link" aria-label="White Leather Ball"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-sale">SALE</span></div>
+              <button class="product-wishlist" data-product-id="p7" data-product-name="Sipahi T20 White Leather Cricket Ball" data-product-price="499" data-product-mrp="699" data-product-img="images/product/cricket-ball-white.png">🤍</button>
+              <img src="images/product/cricket-ball-white.png" alt="White Leather Ball" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">T20 White Leather Cricket Ball — Hand-Stitched</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.6 (2,400+)</span></div>
+              <div class="product-price"><span class="price-now">₹499</span><span class="price-mrp">₹699</span><span class="price-off">29% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p7" data-product-name="Sipahi T20 White Leather Cricket Ball" data-product-price="499" data-product-mrp="699" data-product-img="images/product/cricket-ball-white.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 9: Thigh Guard -->
+          <div class="product-card" data-product="p9" data-category="protective accessories">
+            <a href="shop-detail.html?id=p9" class="product-link" aria-label="Thigh Guard"></a>
+            <div class="product-img-wrap">
+              <button class="product-wishlist" data-product-id="p9" data-product-name="Sipahi Cricket Thigh Guard" data-product-price="399" data-product-mrp="599" data-product-img="images/product/cricket-thigh.png">🤍</button>
+              <img src="images/product/cricket-thigh.png" alt="Cricket Thigh Guard" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Cricket Thigh Guard — Foam Padded, Right Hand</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span></div><span class="rating-count">4.3 (390)</span></div>
+              <div class="product-price"><span class="price-now">₹399</span><span class="price-mrp">₹599</span><span class="price-off">33% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p9" data-product-name="Sipahi Cricket Thigh Guard" data-product-price="399" data-product-mrp="599" data-product-img="images/product/cricket-thigh.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 10: Wicket Keeping Stumps -->
+          <div class="product-card" data-product="p10" data-category="accessories">
+            <a href="shop-detail.html?id=p10" class="product-link" aria-label="Cricket Stumps"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-new">NEW</span></div>
+              <button class="product-wishlist" data-product-id="p10" data-product-name="Sipahi Wooden Cricket Stumps Set" data-product-price="549" data-product-mrp="799" data-product-img="images/product/cricket-stumps.png">🤍</button>
+              <img src="images/product/cricket-stumps.png" alt="Cricket Stumps" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Wooden Cricket Stumps Set — 3 Stumps + 2 Bails</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span></div><span class="rating-count">4.4 (670)</span></div>
+              <div class="product-price"><span class="price-now">₹549</span><span class="price-mrp">₹799</span><span class="price-off">31% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p10" data-product-name="Sipahi Wooden Cricket Stumps Set" data-product-price="549" data-product-mrp="799" data-product-img="images/product/cricket-stumps.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 11: WK Gloves -->
+          <div class="product-card" data-product="p11" data-category="protective gloves">
+            <a href="shop-detail.html?id=p11" class="product-link" aria-label="WK Gloves"></a>
+            <div class="product-img-wrap">
+              <button class="product-wishlist" data-product-id="p11" data-product-name="Sipahi Wicketkeeper Gloves Pro Series" data-product-price="899" data-product-mrp="1299" data-product-img="images/product/cricket-keeper.png">🤍</button>
+              <img src="images/product/cricket-keeper.png" alt="Wicketkeeper Gloves" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Wicketkeeper Gloves — Pro Series, Leather Palm</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.6 (510)</span></div>
+              <div class="product-price"><span class="price-now">₹899</span><span class="price-mrp">₹1,299</span><span class="price-off">30% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p11" data-product-name="Sipahi Wicketkeeper Gloves Pro Series" data-product-price="899" data-product-mrp="1299" data-product-img="images/product/cricket-keeper.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 12: Cricket Shoes -->
+          <div class="product-card" data-product="p12" data-category="accessories">
+            <a href="shop-detail.html?id=p12" class="product-link" aria-label="Cricket Shoes"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-hot">HOT</span></div>
+              <button class="product-wishlist" data-product-id="p12" data-product-name="Sipahi Cricket Batting Shoes" data-product-price="1799" data-product-mrp="2499" data-product-img="images/product/cricket-shoes.png">🤍</button>
+              <img src="images/product/cricket-shoes.png" alt="Cricket Shoes" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Cricket Batting Shoes — White Spikes, Professional</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div><span class="rating-count">4.8 (1,020)</span></div>
+              <div class="product-price"><span class="price-now">₹1,799</span><span class="price-mrp">₹2,499</span><span class="price-off">28% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p12" data-product-name="Sipahi Cricket Batting Shoes" data-product-price="1799" data-product-mrp="2499" data-product-img="images/product/cricket-shoes.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 13: Elbow Guard -->
+          <div class="product-card" data-product="p13" data-category="protective accessories">
+            <a href="shop-detail.html?id=p13" class="product-link" aria-label="Elbow Guard"></a>
+            <div class="product-img-wrap">
+              <button class="product-wishlist" data-product-id="p13" data-product-name="Sipahi Cricket Elbow Guard" data-product-price="299" data-product-mrp="449" data-product-img="images/product/cricket-elbow.png">🤍</button>
+              <img src="images/product/cricket-elbow.png" alt="Cricket Elbow Guard" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Cricket Elbow Guard — Hard Shell + Foam Inner</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span></div><span class="rating-count">4.2 (290)</span></div>
+              <div class="product-price"><span class="price-now">₹299</span><span class="price-mrp">₹449</span><span class="price-off">33% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p13" data-product-name="Sipahi Cricket Elbow Guard" data-product-price="299" data-product-mrp="449" data-product-img="images/product/cricket-elbow.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 14: Kids Poplar Bat -->
+          <div class="product-card" data-product="p14" data-category="bats kids">
+            <a href="shop-detail.html?id=p14" class="product-link" aria-label="Kids Cricket Bat"></a>
+            <div class="product-img-wrap">
+              <button class="product-wishlist" data-product-id="p14" data-product-name="Sipahi Kids Cricket Bat Poplar Wood" data-product-price="499" data-product-mrp="799" data-product-img="images/product/cricket-bat-kw.png">🤍</button>
+              <img src="images/product/cricket-bat-kw.png" alt="Kids Cricket Bat" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Kids Cricket Bat — Poplar Wood, Size 4, Age 8–12</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span></div><span class="rating-count">4.2 (390)</span></div>
+              <div class="product-price"><span class="price-now">₹499</span><span class="price-mrp">₹799</span><span class="price-off">37% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p14" data-product-name="Sipahi Kids Cricket Bat Poplar Wood" data-product-price="499" data-product-mrp="799" data-product-img="images/product/cricket-bat-kw.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 15: Heavy Tennis Ball Pack -->
+          <div class="product-card" data-product="p15" data-category="balls">
+            <a href="shop-detail.html?id=p15" class="product-link" aria-label="Tennis Ball Pack"></a>
+            <div class="product-img-wrap">
+              <div class="product-badges"><span class="badge badge-sale">COMBO</span></div>
+              <button class="product-wishlist" data-product-id="p15" data-product-name="Sipahi Cricket Tennis Ball Pack of 12" data-product-price="349" data-product-mrp="499" data-product-img="images/product/cricket-ball.png">🤍</button>
+              <img src="images/product/cricket-ball.png" alt="Cricket Tennis Ball" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Cricket Tennis Ball — Pack of 12, Heavy Weight</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.5 (340)</span></div>
+              <div class="product-price"><span class="price-now">₹349</span><span class="price-mrp">₹499</span><span class="price-off">30% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p15" data-product-name="Sipahi Cricket Tennis Ball Pack of 12" data-product-price="349" data-product-mrp="499" data-product-img="images/product/cricket-ball.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- 16: Octopus Bat Grip -->
+          <div class="product-card" data-product="p16" data-category="accessories">
+            <a href="shop-detail.html?id=p16" class="product-link" aria-label="Bat Grip"></a>
+            <div class="product-img-wrap">
+              <button class="product-wishlist" data-product-id="p16" data-product-name="Sipahi Cricket Bat Grip Octopus" data-product-price="149" data-product-mrp="249" data-product-img="images/product/cricket-bat.png">🤍</button>
+              <img src="images/product/cricket-bat.png" alt="Cricket Bat Grip" loading="lazy">
+            </div>
+            <div class="product-body">
+              <p class="product-brand">SIPAHI</p>
+              <h3 class="product-name">Cricket Bat Grip — Octopus, Pack of 3</h3>
+              <div class="product-rating"><div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div><span class="rating-count">4.7 (1,800+)</span></div>
+              <div class="product-price"><span class="price-now">₹149</span><span class="price-mrp">₹249</span><span class="price-off">40% off</span></div>
+            </div>
+            <div class="product-footer">
+              <button class="btn-add-cart" data-product-id="p16" data-product-name="Sipahi Cricket Bat Grip Octopus" data-product-price="149" data-product-mrp="249" data-product-img="images/product/cricket-bat.png">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+        </div><!-- /products-grid -->
+
+        <!-- Pagination -->
+        <div style="display:flex;justify-content:center;gap:8px;margin-top:32px;flex-wrap:wrap">
+          <button class="btn btn-primary" style="min-width:44px">1</button>
+          <button class="btn btn-ghost" style="min-width:44px">2</button>
+          <button class="btn btn-ghost" style="min-width:44px">3</button>
+          <button class="btn btn-ghost">Agle &rarr;</button>
+        </div>
+
+      </div><!-- /listing-area -->
+    </div><!-- /shop-layout -->
+  </div><!-- /container -->
+</main>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:12px">SIPAHI <span style="color:var(--accent)">SPORTS</span></div>
+          <p>India's #1 cricket equipment brand. Trusted since 2005.</p>
+          <div class="social-links" style="margin-top:16px">
+            <a href="#" class="social-link">f</a><a href="#" class="social-link">📸</a><a href="#" class="social-link">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop-list.html">All Products</a></li>
+            <li><a href="wishlist.html">❤️ Wishlist</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="shop-list.html?cat=bats">🏏 Cricket Bats</a></li>
+            <li><a href="shop-list.html?cat=balls">⚾ Cricket Balls</a></li>
+            <li><a href="shop-list.html?cat=protective">🛡️ Protective Gear</a></li>
+            <li><a href="shop-list.html?cat=bags">🎒 Cricket Bags</a></li>
+            <li><a href="shop-list.html?cat=accessories">🔧 Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <address>
+            <div class="footer-contact-item"><span>📞</span><span>+91 98765 43210</span></div>
+            <div class="footer-contact-item"><span>✉️</span><span>support@sipahisports.com</span></div>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <p>© 2024 Sipahi Sports Pvt. Ltd. All rights reserved.</p>
+      <div class="footer-payment">
+        <span class="payment-chip">UPI</span><span class="payment-chip">Visa</span><span class="payment-chip">Mastercard</span><span class="payment-chip">COD</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top">↑</button>
+<script src="javascript/sipahi.js"></script>
+</body>
+</html>
